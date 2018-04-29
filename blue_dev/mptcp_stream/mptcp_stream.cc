@@ -1,3 +1,5 @@
+// This is a modified Snort++ example. Cisco's original copyright notice 
+// if below: 
 //--------------------------------------------------------------------------
 // Copyright (C) 2014-2016 Cisco and/or its affiliates. All rights reserved.
 //
