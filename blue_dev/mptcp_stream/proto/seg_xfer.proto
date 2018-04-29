@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+// Package name (cpp namespace)
+package seg_xfer;
+
+message PacketMsg {
+  string name = 1;
+  uint32 src_ip = 2;  // Only IPv4 Right Now
+  uint32 src_port = 3;
+  uint32 dst_ip = 4;
+  uint32 dst_port = 5;
+  uint32 tcp_flags = 6;
+  uint32 seqno = 7;
+  uint32 ackno = 8;
+  bytes payload = 9;
+  uint32 dsize = 10;
+  repeated bytes mptcp_option = 11;
+}
+
+message ReassembledPayload{
+  bytes payload = 1;
+}

